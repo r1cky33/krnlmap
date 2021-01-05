@@ -1,0 +1,31 @@
+﻿  Building 'mapper' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  cleaner.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\crt\setjmp.h(206,107): warning C5040: dynamic exception specifications are valid only in C++14 and earlier; treating as noexcept(false)
+D:\work\kernel\krnlface_mapper\krnlface\imports.h(60,3): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(28411,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+  globals.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\crt\setjmp.h(206,107): warning C5040: dynamic exception specifications are valid only in C++14 and earlier; treating as noexcept(false)
+D:\work\kernel\krnlface_mapper\krnlface\imports.h(60,3): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(28411,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+  krnlutils.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\crt\setjmp.h(206,107): warning C5040: dynamic exception specifications are valid only in C++14 and earlier; treating as noexcept(false)
+D:\work\kernel\krnlface_mapper\krnlface\imports.h(60,3): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(28411,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+  logger.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\crt\setjmp.h(206,107): warning C5040: dynamic exception specifications are valid only in C++14 and earlier; treating as noexcept(false)
+D:\work\kernel\krnlface_mapper\krnlface\imports.h(60,3): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(28411,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+  source.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\crt\setjmp.h(206,107): warning C5040: dynamic exception specifications are valid only in C++14 and earlier; treating as noexcept(false)
+D:\work\kernel\krnlface_mapper\krnlface\imports.h(60,3): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(28411,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+  utils.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\crt\setjmp.h(206,107): warning C5040: dynamic exception specifications are valid only in C++14 and earlier; treating as noexcept(false)
+D:\work\kernel\krnlface_mapper\krnlface\imports.h(60,3): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(28411,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+  cleaner.obj : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  Generating code
+  Finished generating code
+  krnlface.vcxproj -> D:\work\kernel\krnlface_mapper\x64\Release\mapper.sys
+  Inf2Cat task was skipped as there were no inf files to process
+  

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="source\globals">
+      <UniqueIdentifier>{5df5fea7-f73b-46a5-9679-7b57fab0627a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\deps">
+      <UniqueIdentifier>{0edc038e-8cb7-4ebd-88b2-f65f1edeb7a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\utils">
+      <UniqueIdentifier>{3588492b-3c56-4b94-ab1d-a7e843c2fd29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\krnlutils">
+      <UniqueIdentifier>{59f53596-701e-4959-8984-394a5b27096b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\logger">
+      <UniqueIdentifier>{a93bdf6e-e8e3-4a07-b9d1-a788bd90661e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\cleaner">
+      <UniqueIdentifier>{ab549d42-4520-4b31-bce6-dc8e27ad2db1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="globals.cpp">
+      <Filter>source\globals</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>source\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="krnlutils.cpp">
+      <Filter>source\krnlutils</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>source\logger</Filter>
+    </ClCompile>
+    <ClCompile Include="cleaner.cpp">
+      <Filter>source\cleaner</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>source\globals</Filter>
+    </ClInclude>
+    <ClInclude Include="defs.h">
+      <Filter>source\deps</Filter>
+    </ClInclude>
+    <ClInclude Include="imports.h">
+      <Filter>source\deps</Filter>
+    </ClInclude>
+    <ClInclude Include="stdint.h">
+      <Filter>source\deps</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>source\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="krnlutils.h">
+      <Filter>source\krnlutils</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>source\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="cleaner.h">
+      <Filter>source\cleaner</Filter>
+    </ClInclude>
+    <ClInclude Include="payload.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

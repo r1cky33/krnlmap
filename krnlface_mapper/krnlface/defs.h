@@ -1,6 +1,25 @@
 #pragma once
 
 namespace defs {
+	typedef struct _MDL {
+		struct _MDL* Next;
+		CSHORT           Size;
+		CSHORT           MdlFlags;
+		struct _EPROCESS* Process;
+		PVOID            MappedSystemVa;
+		PVOID            StartVa;
+		ULONG            ByteCount;
+		ULONG            ByteOffset;
+	} MDL, * PMDL;
+
+	typedef struct _POOL_TRACKER_BIG_PAGES
+	{
+		PVOID Va;
+		ULONG Key;
+		ULONG PoolType;
+		ULONG NumberOfBytes;
+	} POOL_TRACKER_BIG_PAGES, * PPOOL_TRACKER_BIG_PAGES;
+
 	typedef enum _SYS_INFO_CLASS {
 		SystemBasicInformation,
 		SystemProcessorInformation,
@@ -215,15 +234,5 @@ namespace defs {
 		VOID* Spare;                                              
 		ULONG SizeOfImageNotRounded;                        
 		ULONG TimeDateStamp;                               
-	};
-
-	struct _POOL_TRACKER_BIG_PAGES
-	{
-		volatile ULONGLONG Va;                                                  //0x0
-		ULONG Key;                                                              //0x8
-		ULONG Pattern : 8;                                                        //0xc
-		ULONG PoolType : 12;                                                      //0xc
-		ULONG SlushSize : 12;                                                     //0xc
-		ULONGLONG NumberOfBytes;                                                //0x10
 	};
 }

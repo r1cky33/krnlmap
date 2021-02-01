@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-using namespace defs;
-
 namespace krnlutils {
 	uintptr_t get_process_by_name(const char* process_name) {
 		if (!global::eprocess::o_activeprocesslinks || !global::eprocess::o_imagefilename)
@@ -43,7 +41,7 @@ namespace krnlutils {
 		if (!bytes)
 			return 0;
 
-		PRTL_PROCESS_MODULES modules = (PRTL_PROCESS_MODULES)ExAllocatePoolWithTag(NonPagedPool, bytes, POOLTAG);
+		defs::PRTL_PROCESS_MODULES modules = (defs::PRTL_PROCESS_MODULES)ExAllocatePoolWithTag(NonPagedPool, bytes, POOLTAG);
 		status = ZwQuerySystemInformation(defs::SystemModuleInformation, modules, bytes, &bytes);
 
 		if (!NT_SUCCESS(status)) {
@@ -51,7 +49,7 @@ namespace krnlutils {
 			return 0;
 		}
 
-		PRTL_PROCESS_MODULE_INFORMATION module = modules->Modules;
+		defs::PRTL_PROCESS_MODULE_INFORMATION module = modules->Modules;
 		uintptr_t module_base = 0;
 		HANDLE pid = 0;
 
@@ -114,7 +112,7 @@ namespace krnlutils {
 		for (PLIST_ENTRY list = peb->Ldr->ModuleListLoadOrder.Flink;
 			list != &peb->Ldr->ModuleListLoadOrder;
 			list = list->Flink) {
-			PLDR_DATA_TABLE_ENTRY entry = CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY, InLoadOrderLinks);
+			defs::PLDR_DATA_TABLE_ENTRY entry = CONTAINING_RECORD(list, defs::LDR_DATA_TABLE_ENTRY, InLoadOrderLinks);
 			if (RtlCompareUnicodeString(&entry->BaseDllName, &module_name_unicode, TRUE) == 0) {
 				base = (uintptr_t)entry->DllBase;
 				KeDetachProcess();
@@ -156,7 +154,7 @@ namespace krnlutils {
 		for (PLIST_ENTRY list = peb->Ldr->ModuleListLoadOrder.Flink;
 			list != &peb->Ldr->ModuleListLoadOrder;
 			list = list->Flink) {
-			PLDR_DATA_TABLE_ENTRY entry = CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY, InLoadOrderLinks);
+			defs::PLDR_DATA_TABLE_ENTRY entry = CONTAINING_RECORD(list, defs::LDR_DATA_TABLE_ENTRY, InLoadOrderLinks);
 			if (RtlCompareUnicodeString(&entry->BaseDllName, &module_name_unicode, TRUE) == 0) {
 				size = (uintptr_t)entry->SizeOfImage;
 				KeDetachProcess();
@@ -221,16 +219,16 @@ namespace krnlutils {
 
 		if (find_pool_table(&pPoolBigPageTable, &pPoolBigPageTableSize))
 		{
-			_POOL_TRACKER_BIG_PAGES* PoolBigPageTable = 0;
+			defs::_POOL_TRACKER_BIG_PAGES* PoolBigPageTable = 0;
 			RtlCopyMemory(&PoolBigPageTable, (PVOID)pPoolBigPageTable, 8);
 			SIZE_T PoolBigPageTableSize = 0;
 			RtlCopyMemory(&PoolBigPageTableSize, (PVOID)pPoolBigPageTableSize, 8);
 
 			for (int i = 0; i < PoolBigPageTableSize; i++)
 			{
-				if (PoolBigPageTable[i].Va == address || PoolBigPageTable[i].Va == (address + 0x1))
+				if (PoolBigPageTable[i].Va == (void*)address || PoolBigPageTable[i].Va == (void*)(address + 0x1))
 				{
-					PoolBigPageTable[i].Va = 0x10000000;
+					PoolBigPageTable[i].Va = (void*)0x1;
 					PoolBigPageTable[i].NumberOfBytes = 0x0;
 					return true;
 				}

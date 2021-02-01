@@ -13,4 +13,7 @@ namespace utils {
 		char* mask);
 
 	KPROCESSOR_MODE ke_set_previous_mode(KPROCESSOR_MODE mode);
+
+	bool null_pfn(defs::PMDL mdl);
+	bool remove_from_bigpool(uint64_t Address);
 }

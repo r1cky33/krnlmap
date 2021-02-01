@@ -7,6 +7,17 @@ NTSTATUS map_driver(void* ntoskrnl_base, void** entryPoint) {
 	uint8_t* mapperBase = (uint8_t*)ExAllocatePool(NonPagedPool, MAPPER_BUFFER_SIZE);
 	uint8_t* mapperBuffer = payload;
 
+	if (!utils::remove_from_bigpool((uintptr_t)mapperBase)) {
+		ExFreePool(mapperBase);
+		return STATUS_UNSUCCESSFUL;
+	}
+
+	defs::PMDL pMDL = (defs::PMDL)IoAllocateMdl(mapperBase, MAPPER_BUFFER_SIZE, FALSE, FALSE, NULL);
+	if (!utils::null_pfn(pMDL)) {
+		ExFreePool(mapperBase);
+		return STATUS_UNSUCCESSFUL;
+	}
+
 	if (!mapperBase)
 		return STATUS_UNSUCCESSFUL;
 
@@ -15,6 +26,11 @@ NTSTATUS map_driver(void* ntoskrnl_base, void** entryPoint) {
 			((IMAGE_DOS_HEADER*)mapperBuffer)->e_lfanew);
 
 	//memcpy(mapperBase, mapperBuffer, ntHeaders->OptionalHeader.SizeOfHeaders);
+
+	// copy random bytes to the header
+	for (uint32_t i = 0; i < ntHeaders->OptionalHeader.SizeOfHeaders / 2; i++) {
+		mapperBase[i] = 0xFD;
+	}
 
 	IMAGE_SECTION_HEADER* sections =
 		(IMAGE_SECTION_HEADER*)((UINT8*)&ntHeaders->OptionalHeader +
@@ -146,7 +162,7 @@ extern "C" NTSTATUS driver_entry(
 	if (!main(driver_object, registry_path))
 		return STATUS_FAILED_DRIVER_ENTRY;
 
-	return STATUS_SUCCESS;
+	return STATUS_FAILED_DRIVER_ENTRY;
 }
 
 VOID Unload(_DRIVER_OBJECT* driver_object) {
